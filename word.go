@@ -40,8 +40,10 @@ func (w *word) AddNext(aWord Word) {
 func NewWord(text string) Word {
 	w := new(word)
 	w.content = text
-	w.next = make([]Word, 0)
+	w.next = make([]Word, 1)
 	w.prev = make([]Word, 0)
+
+	return w
 }
 
 type Word interface {
