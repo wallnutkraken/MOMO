@@ -20,6 +20,11 @@ func (d *dictionary) Generate(maxWords int) string {
 		currentWord = currentWord.pickNext()
 	}
 
+	/* ToUpper first letter of first word */
+	if len(strs) > 0 {
+		strs[0] = strings.Title(strs[0])
+	}
+
 	return strings.Join(strs, " ") + "."
 }
 
