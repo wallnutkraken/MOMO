@@ -37,6 +37,13 @@ func (w *word) AddNext(aWord Word) {
 	w.next = append(w.next, aWord)
 }
 
+func NewWord(text string) Word {
+	w := new(word)
+	w.content = text
+	w.next = make([]Word, 0)
+	w.prev = make([]Word, 0)
+}
+
 type Word interface {
 	String() string
 	Prev() []Word
