@@ -22,4 +22,5 @@ func (d *dictionary) AddWord(theWord Word) {
 type Dictionary interface {
 	AddWord()
 	Feed(string)
+	Generate(int) string
 }
