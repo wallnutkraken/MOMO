@@ -13,6 +13,9 @@ func (d *dictionary) addWord(theWord Word) {
 func (d *dictionary) AddWord(theWord Word) {
 	if d.content[theWord.String()] == nil {
 		d.addWord(theWord)
+	} else {
+		d.content[theWord.String()].AddNexts(theWord.Next()...)
+		d.content[theWord.String()].AddPrevs(theWord.Prev()...)
 	}
 }
 

@@ -37,6 +37,18 @@ func (w *word) AddNext(aWord Word) {
 	w.next = append(w.next, aWord)
 }
 
+func (w *word) AddNexts(words ...Word) {
+	for _, wrd := range words {
+		w.AddNext(wrd)
+	}
+}
+
+func (w *word) AddPrevs(words ...Word) {
+	for _, wrd := range words {
+		w.AddPrev(wrd)
+	}
+}
+
 func NewWord(text string) Word {
 	w := new(word)
 	w.content = text
@@ -52,4 +64,6 @@ type Word interface {
 	AddPrev(Word)
 	Next() []Word
 	AddNext(Word)
+	AddNexts(...Word)
+	AddPrevs(...Word)
 }
