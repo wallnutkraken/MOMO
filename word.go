@@ -2,20 +2,20 @@ package MOMO
 
 type word struct {
 	content string
-	prev    []Word
-	next    []Word
+	prevW   []Word
+	nextW   []Word
 }
 
 func (w *word) String() string {
 	return w.content
 }
 
-func (w *word) Prev() []Word {
-	return w.prev
+func (w *word) prev() []Word {
+	return w.prevW
 }
 
-func (w *word) Next() []Word {
-	return w.next
+func (w *word) next() []Word {
+	return w.nextW
 }
 
 func hasWord(words []Word, word Word) bool {
@@ -27,43 +27,44 @@ func hasWord(words []Word, word Word) bool {
 	return false
 }
 
-func (w *word) AddPrev(aWord Word) {
-	if !hasWord(w.prev, aWord) {
-		w.prev = append(w.prev, aWord)
+func (w *word) addPrev(aWord Word) {
+	if !hasWord(w.prevW, aWord) {
+		w.prevW = append(w.prevW, aWord)
 	}
 }
 
-func (w *word) AddNext(aWord Word) {
-	w.next = append(w.next, aWord)
+func (w *word) addNext(aWord Word) {
+	w.nextW = append(w.nextW, aWord)
 }
 
-func (w *word) AddNexts(words ...Word) {
+func (w *word) addNexts(words ...Word) {
 	for _, wrd := range words {
-		w.AddNext(wrd)
+		w.addNext(wrd)
 	}
 }
 
-func (w *word) AddPrevs(words ...Word) {
+func (w *word) addPrevs(words ...Word) {
 	for _, wrd := range words {
-		w.AddPrev(wrd)
+		w.addPrev(wrd)
 	}
 }
 
 func NewWord(text string) Word {
 	w := new(word)
 	w.content = text
-	w.next = make([]Word, 1)
-	w.prev = make([]Word, 0)
+	w.nextW = make([]Word, 1)
+	w.prevW = make([]Word, 0)
 
 	return w
 }
 
 type Word interface {
 	String() string
-	Prev() []Word
-	AddPrev(Word)
-	Next() []Word
-	AddNext(Word)
-	AddNexts(...Word)
-	AddPrevs(...Word)
+	prev() []Word
+	addPrev(Word)
+	next() []Word
+	addNext(Word)
+	addNexts(...Word)
+	addPrevs(...Word)
+	pickNext() Word
 }

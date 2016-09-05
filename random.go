@@ -1,15 +1,11 @@
 package MOMO
 
-import (
-    "time"
-    "math/rand"
-)
+import "math/rand"
 
-func init() {
-    /* Initialize and seed the RNG */
-    rand.Seed(time.Now().UTC().UnixNano())
+func randomExclusive(maxExclusive int) int {
+	return rand.Intn(maxExclusive)
 }
 
-func RandomExclusive(maxExclusive int) int {
-    return rand.Intn(maxExclusive)
+func randomBool() bool {
+	return rand.Float64() > 0.5
 }

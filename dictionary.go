@@ -14,13 +14,21 @@ func (d *dictionary) AddWord(theWord Word) {
 	if d.content[theWord.String()] == nil {
 		d.addWord(theWord)
 	} else {
-		d.content[theWord.String()].AddNexts(theWord.Next()...)
-		d.content[theWord.String()].AddPrevs(theWord.Prev()...)
+		d.content[theWord.String()].addNexts(theWord.next()...)
+		d.content[theWord.String()].addPrevs(theWord.prev()...)
 	}
 }
 
+func NewDictionary() Dictionary {
+	d := new(dictionary)
+	d.content = make(map[string]Word)
+	d.keys = make([]string, 0)
+
+	return d
+}
+
 type Dictionary interface {
-	AddWord()
+	AddWord(Word)
 	Feed(string)
 	Generate(int) string
 }
