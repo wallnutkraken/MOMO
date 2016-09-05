@@ -6,13 +6,9 @@ type dictionary struct {
 }
 
 func (d *dictionary) addWord(theWord Word) {
-	d.keys = append(d.keys, theWord.String())
-	d.content[theWord.String()] = theWord
-}
-
-func (d *dictionary) AddWord(theWord Word) {
 	if d.content[theWord.String()] == nil {
-		d.addWord(theWord)
+		d.keys = append(d.keys, theWord.String())
+		d.content[theWord.String()] = theWord
 	} else {
 		d.content[theWord.String()].addNexts(theWord.next()...)
 		d.content[theWord.String()].addPrevs(theWord.prev()...)
@@ -28,7 +24,7 @@ func NewDictionary() Dictionary {
 }
 
 type Dictionary interface {
-	AddWord(Word)
+	addWord(Word)
 	Feed(string)
 	Generate(int) string
 }

@@ -9,15 +9,14 @@ func (d *dictionary) Feed(text string) {
 
 	if len(words) < 2 {
 		a := NewWord(words[0])
-		d.AddWord(a)
-		d.AddWord(a)
+		d.addWord(a)
 	}
 
 	var previous Word
 	for x := 1; x < len(words); x++ {
 		currentWord := NewWord(words[x])
 		currentWord.addPrev(previous)
-		d.AddWord(currentWord)
+		d.addWord(currentWord)
 		if previous != nil {
 			previous.addNext(currentWord)
 		}
