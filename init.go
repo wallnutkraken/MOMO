@@ -9,5 +9,5 @@ import (
 func init() {
 	/* Initialize and seed the RNG */
 	rand.Seed(time.Now().UTC().UnixNano())
-	replacer = strings.NewReplacer(".", "", "-", "", ",", "", "@", "", "'", "", "\"", "", "!", "", "?", "")
+	replacer = strings.NewReplacer(".", "", "-", "", ",", "", "@", "", "'", "", "\"", "", "!", "", "?", "", "\n", "")
 }

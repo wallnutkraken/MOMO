@@ -30,20 +30,8 @@ func (d *dictionary) Generate(maxWords int) string {
 
 func (w *word) pickNext() Word {
 	choices := w.next()
-	var wrd Word
-	keepGoing := true
-
-	for keepGoing {
-		wrd = choices[randomExclusive(len(choices))]
-		if wrd != nil {
-			/* Break if we have a word */
-			break
-		}
-		if wrd == nil && !randomBool() {
-			/* Break if word is nil and we're unlucky */
-			break
-		}
+	if len(choices) == 0 {
+		return nil
 	}
-
-	return wrd
+	return choices[randomExclusive(len(choices))]
 }

@@ -52,7 +52,7 @@ func (w *word) addPrevs(words ...Word) {
 func NewWord(text string) Word {
 	w := new(word)
 	w.content = text
-	w.nextW = make([]Word, 1)
+	w.nextW = make([]Word, 0)
 	w.prevW = make([]Word, 0)
 
 	return w
