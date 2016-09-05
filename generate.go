@@ -5,7 +5,7 @@ import (
 )
 
 func (d *dictionary) Generate(maxWords int) string {
-	strs := make([]string, 0)
+	var strs = make([]string, 0)
 
 	startingIndex := randomExclusive(len(d.keys))
 	currentWord := d.content[d.keys[startingIndex]]

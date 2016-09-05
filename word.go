@@ -49,7 +49,7 @@ func (w *word) addPrevs(words ...Word) {
 	}
 }
 
-func NewWord(text string) Word {
+func newWord(text string) Word {
 	w := new(word)
 	w.content = text
 	w.nextW = make([]Word, 0)
@@ -58,6 +58,7 @@ func NewWord(text string) Word {
 	return w
 }
 
+// Word is a single string state in the dictionary.
 type Word interface {
 	String() string
 	prev() []Word
